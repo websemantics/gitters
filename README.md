@@ -28,7 +28,7 @@ Bower install gitters
 NPM
 
 ```bash
-npm i  install gitters
+npm i install gitters
 ```
 
 ## Getting Started
