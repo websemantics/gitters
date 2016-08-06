@@ -67,4 +67,4 @@ Gitters.content(/* repo */ 'websemantics/bragit', /* path */ 'demo', /* callback
 
 ## Examples
 
-The [Semantic Ant](https://github.com/websemantics/semantic-ant) project uses [Gitters](https://github.com/websemantics/gitters) uses to read docs files directly from the Browser.
+The [Semantic Ant](https://github.com/websemantics/semantic-ant) project uses [Gitters](https://github.com/websemantics/gitters) to read documentation files directly from the Browser.
