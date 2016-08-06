@@ -22,13 +22,13 @@
 Bower
 
 ```bash
-Bower install larder
+Bower install gitters
 ```
 
 NPM
 
 ```bash
-npm i  install larder
+npm i  install gitters
 ```
 
 ## Getting Started
