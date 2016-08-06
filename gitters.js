@@ -85,7 +85,7 @@
 
   */
 
-    me.getRepo = function(repo, cb) {
+    me.repo = function(repo, cb) {
         get(compile(baseUrl.substring(0, baseUrl.indexOf('/contents')), {
             repo: repo
         }), cb)
@@ -103,7 +103,7 @@
 
 	  */
 
-    me.getContents = function(repo, path, branch, cb) {
+    me.content = function(repo, path, branch, cb) {
 
         if (typeof branch === 'function') {
             cb = branch

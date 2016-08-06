@@ -27,7 +27,7 @@
     "url": "https://github.com/websemantics/gitters/issues"
   },
   "dependencies": {
-    "jquery": "*",
+    "jquery": "^1.11.3",
     "larder": "*"
   },
   "homepage": "https://github.com/websemantics/gitters#readme"
