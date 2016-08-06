@@ -23,7 +23,7 @@
         root.Gitters = factory(root.jQuery, root.Larder)
     }
 }(this, function($, cache) {
-    var me = { VERSION: '1.0.1'}
+    var me = { VERSION: '1.0.2'}
     var baseUrl = 'https://api.github.com/repos/{{repo}}/contents/{{path}}?ref={{branch}}'
 
     /* Library defaults, can be changed using the 'defaults' member method,

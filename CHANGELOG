@@ -1,3 +1,9 @@
+1.0.2
+    date: 2016-08-05
+    changes:
+    - Add documentation
+    - Rename of class methods
+
 1.0.1
     date: 2016-08-05
     changes:
