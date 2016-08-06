@@ -23,7 +23,7 @@
         root.Gitters = factory(root.jQuery, root.Larder)
     }
 }(this, function($, cache) {
-    var me = { VERSION: '1.0.0'}
+    var me = { VERSION: '1.0.1'}
     var baseUrl = 'https://api.github.com/repos/{{repo}}/contents/{{path}}?ref={{branch}}'
 
     /* Library defaults, can be changed using the 'defaults' member method,
@@ -141,12 +141,7 @@
                 $.ajax({
                     url: url,
                     complete: function(xhr) {
-                        var data = xhr.responseText
-
-                        /* save into cache */
-                        cache.save(url, data)
-
-                        cb.call(null, JSON.parse(xhr.responseText))
+                        cb.call(null, cache.save(url, JSON.parse(xhr.responseText)))
                     },
                     error: function(err) {
                         log((err && err.responseJSON) ? err.responseJSON['message'] : 'There has been an error')
