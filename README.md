@@ -48,7 +48,7 @@ Gitters.defaults({
 
 The library provides few useful methods to enable navigation of content on Github,
 
-*repo*, returns information about a Github repo through a callback method.
+**repo**, returns information about a Github repo through a callback method.
 
 ```javascript
 Gitters.repo('websemantics/semantic-ant', function(repo){
@@ -56,7 +56,7 @@ Gitters.repo('websemantics/semantic-ant', function(repo){
 })
 ```
 
-*content*, returns the content of folders or files on a given Github repo.
+**content**, returns the content of folders or files on a given Github repo.
 
 ```javascript
 Gitters.content('websemantics/bragit', 'demo', function(files){
