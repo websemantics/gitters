@@ -59,7 +59,7 @@ Gitters.repo('websemantics/semantic-ant', function(repo){
 **content**, returns the content of folders or files on a given Github repo.
 
 ```javascript
-Gitters.content('websemantics/bragit', 'demo', function(files){
+Gitters.content(/* repo */ 'websemantics/bragit', /* path */ 'demo', /* callback */ function(files){
   /* list of file in folder 'demo' */
   console.log(files)
 })
