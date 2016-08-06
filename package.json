@@ -1,6 +1,6 @@
 {
   "name": "gitters",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Straightforward Github reader with cache.",
   "main": "gitters.js",
   "scripts": {
@@ -28,7 +28,8 @@
   },
   "dependencies": {
     "jquery": "^1.11.3",
-    "larder": "*"
+    "larder": "*",
+    "base-64": "*"
   },
   "homepage": "https://github.com/websemantics/gitters#readme"
 }

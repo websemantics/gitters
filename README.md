@@ -33,9 +33,7 @@ npm i install gitters
 
 ## Getting Started
 
-This library comes pre-configured with two global settings, `clearOnStart` to indicate clearing the cache on each Browser refresh (true by default) and, `expires`, the expiration duration per stored item in minutes (1 hour by default).
-
-To change,
+This library comes pre-configured with three global settings, `clearOnStart` to indicate clearing the cache on each Browser refresh event (enabled by default), `expires`, the expiration period per stored item in minutes (set to 1 hour by default), to change,
 
 ```javascript
 Gitters.defaults({
@@ -44,27 +42,50 @@ Gitters.defaults({
 })
 ```
 
-## Usage
-
-The library provides few useful methods to enable navigation of content on Github,
-
-**repo**, returns information about a Github repo through a callback method.
+And finally, `decodeBase64` which when set to `true`, the content of all retrieved objects will be Base64-decoded before saving the the cache. This setting `decodeBase64` is enabled by default; here's how to switch it off,
 
 ```javascript
-Gitters.repo('websemantics/semantic-ant', function(repo){
+Gitters.defaults({
+  decodeBase64: false
+})
+```
+
+## Usage
+
+The library provides one pubic method besides setting defaults, `fetch` to enable content navigation Github,
+
+- Get repo details,
+
+```javascript
+Gitters.fetch('websemantics/semantic-ant', function(repo){
   console.log(repo)
 })
 ```
 
-**content**, returns the content of folders or files on a given Github repo.
+- Returns the content of a folder (list of files)
 
 ```javascript
-Gitters.content(/* repo */ 'websemantics/bragit', /* path */ 'demo', /* callback */ function(files){
-  /* list of file in folder 'demo' */
+Gitters.content('websemantics/vimeo-upload', 'img', 'master', function(files) {
   console.log(files)
 })
 ```
 
-## Examples
+The branch argument is optional.
+
+- Get the content of a list of files
+
+```javascript
+Gitters.fetch('websemantics/Hotdraw.js', 'src/Demo', function(files) {
+    Gitters.fetch('websemantics/Hotdraw.js', files.map(function(file) {
+        return file.path
+    }), 'master', function(jsFiles) {
+        for (i in jsFiles) {
+            console.log(jsFiles[i].content)
+        }
+    })
+})
+```
+
+## Used By
 
 The [Semantic Ant](https://github.com/websemantics/semantic-ant) project uses [Gitters](https://github.com/websemantics/gitters) to read documentation files directly from the Browser.
