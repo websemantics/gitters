@@ -1,7 +1,7 @@
 {
   "name": "gitters",
   "main": "gitters.js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "homepage": "https://github.com/websemantics/gitters",
   "authors": [
     "Adnan <adnan@websemantics.ca>"

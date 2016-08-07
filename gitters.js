@@ -24,7 +24,7 @@
     }
 }(this, function($, cache, Base64) {
     var me = {
-        VERSION: '1.0.3'
+        VERSION: '1.0.4'
     }
     var baseUrl = 'https://api.github.com/repos/{{repo}}/contents/{{path}}?ref={{branch}}'
 
@@ -239,7 +239,7 @@
 
     if (typeof $ === 'undefined') {
         console.error('Please install the latest jQuery library')
-    } else if (typeof Larder === 'undefined') {
+    } else if (typeof cache === 'undefined') {
         console.error('Please install the latest Larder library')
     } else if (typeof Base64 === 'undefined') {
         console.error('Please install the latest Base64 library')
