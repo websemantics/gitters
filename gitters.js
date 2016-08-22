@@ -24,7 +24,7 @@
     }
 }(this, function($, cache, Base64) {
     var me = {
-        VERSION: '1.0.4'
+        VERSION: '1.0.5'
     }
     var baseUrl = 'https://api.github.com/repos/{{repo}}/contents/{{path}}?ref={{branch}}'
 
@@ -40,12 +40,7 @@
 
   */
 
-    var defaults = {
-        debug: false,
-        clearOnStart: true,
-        decodeBase64: true,
-        'expires': 60
-    }
+    var defaults = {}
 
     // -------------------------------------------------------------------------
     // Public methods
@@ -59,7 +54,15 @@
     */
 
     me.defaults = function(opts) {
-        return $.extend(true, defaults, opts)
+        var ret = $.extend(true, defaults, opts)
+
+        /* also set Larder settings */
+        cache.defaults({
+            expires: defaults.expires,
+            debug: defaults.debug
+        })
+
+        return ret
     }
 
     /*
@@ -70,23 +73,26 @@
       - paths (string, array of strings or empty): path(s) to the required folder(s) / file(s) (optional)
       - branch (string): the repo branch (optional)
       - cb (function): callback function
+      - bubbleError (boolean): if true, throw and generated error
 
   */
 
-    me.fetch = function(repo, paths, branch, cb) {
+    me.fetch = function(repo, paths, branch, cb, bubbleError) {
 
         /* if no path(s) are provided, get the repo's data */
         if (typeof paths === 'function') {
             cb = paths
+            bubbleError = branch
             get(compile(baseUrl.substring(0, baseUrl.indexOf('/contents')), {
                 repo: repo
-            })).then(function(data) {
+            }), bubbleError).then(function(data) {
                 cb.call(null, data)
             })
 
         } else {
 
             if (typeof branch === 'function') {
+                bubbleError = cb
                 cb = branch
                 branch = 'master'
             }
@@ -100,7 +106,7 @@
                     repo: repo,
                     path: path,
                     branch: branch
-                }))
+                }), bubbleError)
             })).then(function( /* val1, val2, val3 */ ) {
 
                 /* if the user has provided a single path, return the data of that path only */
@@ -126,11 +132,6 @@
         /* setup the cache with expiration time in case the defaults was set by the user, also,
           clear cache if not set outherwise */
 
-        cache.defaults({
-            expires: defaults.expires,
-            debug: defaults.debug
-        })
-
         if (defaults.clearOnStart) {
             cache.clear()
         }
@@ -141,10 +142,11 @@
 
         Parameters:
         - url (string): url to the resource
+        - bubbleError (boolean): if true, throw and generated error
 
     */
 
-    function get(url) {
+    function get(url, bubbleError) {
 
         /* use url as key for the cache */
         var value = cache.fetch(url)
@@ -157,9 +159,15 @@
                 $.get(url)
                     .done(function(value) {
                         defer.resolve(cache.save(url, decode(value)))
+                    }).error(function(err) {
+                        log(err.error)
                     })
             } catch (err) {
-                log(err.message)
+                if (bubbleError) {
+                    throw new Error(err)
+                } else {
+                    log(err.error)
+                }
             }
         }
         return defer
@@ -248,6 +256,13 @@
             init()
         })
     }
+
+    me.defaults({
+        debug: false,
+        clearOnStart: true,
+        decodeBase64: true,
+        expires: 60
+    })
 
     return me
 }))

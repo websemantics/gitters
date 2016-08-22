@@ -1,3 +1,9 @@
+1.0.5
+    date: 2016-08-22
+    changes:
+    - Set Larder default
+    - Allow error events to bubble
+
 1.0.3
     date: 2016-08-05
     changes:

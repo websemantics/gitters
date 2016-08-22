@@ -1,6 +1,6 @@
 {
   "name": "gitters",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Straightforward Github reader with cache.",
   "main": "gitters.js",
   "scripts": {
