@@ -24,6 +24,7 @@
   ],
   "dependencies": {
     "jquery": "*",
-    "larder": "*"
+    "larder": "*",
+    "base-64": "*"
   }
 }
