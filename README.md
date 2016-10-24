@@ -14,7 +14,6 @@
 
           Straightforward Github reader with cache
 ```
-
 > Gitters is a utility that provides a straightforward way to access content on Github without the hassle of dealing with Github API libraries. There is no need for an `API KEY` to use Gitters, and, the library provides a basic cache support using [Larder](https://github.com/websemantics/larder) to optimize network usage.
 
 ## Install

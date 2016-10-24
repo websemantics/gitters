@@ -1,3 +1,8 @@
+1.0.6
+    date: 2016-10-24
+    changes:
+    - Fix an issue with jquery promises, 'error' method not found.
+
 1.0.5
     date: 2016-08-22
     changes:

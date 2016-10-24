@@ -24,7 +24,7 @@
     }
 }(this, function($, cache, Base64) {
     var me = {
-        VERSION: '1.0.5'
+        VERSION: '1.0.6'
     }
     var baseUrl = 'https://api.github.com/repos/{{repo}}/contents/{{path}}?ref={{branch}}'
 
@@ -159,7 +159,7 @@
                 $.get(url)
                     .done(function(value) {
                         defer.resolve(cache.save(url, decode(value)))
-                    }).error(function(err) {
+                    }).fail(function(err) {
                         log(err.error)
                     })
             } catch (err) {
